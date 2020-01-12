@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: kkmulticloud-com-tls
+spec:
+  secretName: kkmulticloud-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: kkmulticloud.com
+  dnsNames:
+    - kkmulticloud.com
+    - www.kkmulticloud.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - kkmulticloud.com
+          - www.multicloud.com
